@@ -139,3 +139,22 @@ body {
         transform: rotate(360deg);
     }
 }
+
+.sngDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.song-title{
+    padding: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #b20a2c;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 100px;
+}
+
+.song-title:focus{
+    outline: none;
+}

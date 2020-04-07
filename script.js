@@ -7,10 +7,13 @@ const progress = document.getElementById('progress');
 const progressContainer = document.getElementById('progress-container');
 const title = document.getElementById('title');
 const cover = document.getElementById('cover');
-const display = document.getElementById('display-songs');
+const display = document.querySelector('.display-songs');
+//const songTitle = document.querySelector('.song-title');
+// const h1 = document.querySelectorAll('h1');
 
 // Song titles
-const songs = ['impossible', 'all-of-me', 'law'];
+const songs = ['Impossible', 'All-of-me', 'Law', 'i-hate-u-i-love-u'];
+const singers = ['James arthur', 'John legend', 'Elissa', 'Gnash']
 
 let songIndex = 2;
 
@@ -80,7 +83,26 @@ function setProgress(e){
    audio.currentTime = (clickX / width) * duration;
 }
 
+function displaySongs(){
+    const songDiv = document.createElement('div');
+    songDiv.classList.add('sngDiv');
+    console.log(songs)
+    songs.map((sng, i) =>{
+        return songDiv.innerHTML += ` <button class='song-title'>${sng} - ${singers[i]}</button> `
+    })
+    
+    console.log(songDiv)
+    display.appendChild(songDiv)
+}
 
+displaySongs()
+
+function start(e){
+    const song = e.target.innerHTML.split(' ')[0];
+    console.log(song)
+    const index = songs.indexOf(song)
+    loadSong(songs[index]);
+}
 
 //Event listeners
 playBtn.addEventListener('click', () => {
@@ -101,3 +123,8 @@ audio.addEventListener('timeupdate', updateProgress);
 progressContainer.addEventListener('click', setProgress);
 
 audio.addEventListener('ended', nextSong);
+
+display.addEventListener('click', start)
+
+
+
